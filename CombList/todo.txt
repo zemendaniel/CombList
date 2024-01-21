@@ -1,0 +1,11 @@
+spine:
+	addfirst, addlast, deletebyvalue, deletebyindex, deleteallbyvalue, iselement
+
+tooth:
+	addfirst, addlast, deletebyvalue, deletebyindex, deleteallbyvalue, iselement
+
+[] get, set
+
+copy konstrukt
+
+tostring
