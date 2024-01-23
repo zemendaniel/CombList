@@ -145,34 +145,6 @@ namespace CombList
             spineNode.Count++;
         }
         
-        /*
-         
-        private void RemoveSingleToothNodeByValueAndSpineIndex(int index, int value)
-        {
-            SpineNode spineNode = GetSpineNodeByIndex(index);
-            spineNode.Count--;
-            if (spineNode.Down.Data == value)
-            {
-                spineNode.Down = spineNode.Down.Down;
-                return;
-            }
-            ToothNode toothNode = spineNode.Down;
-            while (toothNode.Down.Data != value) 
-            {
-                if (toothNode.Data == value)
-                {
-                    toothNode.Down = toothNode.Down.Down;
-                    return;
-                }
-                
-                toothNode = toothNode.Down; 
-                return;
-            }
-
-            */
-
-
-
         
         public bool IsToothNodeElement(int index, int value)
         {
@@ -281,57 +253,6 @@ namespace CombList
                 toothNode.Data = value;
             }
         }
-        /*
-            private int GetMaxYValue()
-            {
-                int max = GetSpineNodeByIndex(0).Count;
-
-                for (int i = 1; i < Count; i++)
-                {
-                    int tmp = GetSpineNodeByIndex(i).Count;
-                    if (tmp > max)
-                    {
-                        max = tmp;
-                    }
-                }
-                return max;
-            }
-
-         public override string ToString()
-         {
-             if (head == null) return "null";
-
-             string output = "  ";
-             for (int i = 0; i < Count;i++)
-             {
-                 output += GetSpineNodeByIndex(i).Data.ToString() + "   ";
-             }
-             output += "\n";
-
-             int maxYValue = GetMaxYValue();
-             for (int y = 0; y < maxYValue; y++)
-             {
-                 for (int x = 0; x < Count; x++) 
-                 {
-                     string tmp;
-                     try
-                     {
-                         tmp = "| " + this[x, y].ToString() + " ";
-                     }
-                     catch (IndexOutOfRangeException)
-                     {
-                         tmp = " | ";
-                     }
-
-                     output += tmp;
-                 }
-                 output += "|\n";
-             }
-             return output;
-         }
-
-         */
-
 
         public override string ToString()
         {
