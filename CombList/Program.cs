@@ -12,8 +12,8 @@ namespace CombList
             cl.AddSpineNodeFirst(5);
             cl.AddSpineNodeLast(26);
             cl.AddSpineNodeFirst(10);
-            Console.WriteLine(cl);
-            Console.WriteLine("\n");
+            //Console.WriteLine(cl);
+            //Console.WriteLine("\n");
 
             cl.AddToothNodeLast(0, 9);
             cl.AddToothNodeFirst(0, 14);
@@ -55,9 +55,17 @@ namespace CombList
             Console.WriteLine(cl);
             Console.WriteLine("\n");
 
-            cl.RemoveEveryToothNodeByValueAndSpineIndex(cl.Count - 1, 99);
+            Console.WriteLine(cl.IsSpineNodeElement(2));
+
+            cl.RemoveAllSpineNodesByValue(2);
             Console.WriteLine(cl);
-            cl.RemoveAllToothNodeByValue(2);
+            Console.WriteLine("\n");
+
+            cl.RemoveToothNodeByIndex(0, 0);
+            Console.WriteLine(cl);
+            Console.WriteLine("\n");
+
+            cl.RemoveAllToothNodesByValue(1);
             Console.WriteLine(cl);
             Console.WriteLine("\n");
 

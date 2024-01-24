@@ -163,40 +163,80 @@ namespace CombList
 
             return false;
         }
-        
-        
-        
-        
-        
+        public bool DoesSpineNodeContainValue(SpineNode spineNode, int value)
+        {
+            if (spineNode.Count == 0) return false;
+            
+            if (spineNode.Count == 1)
+            {
+                if (spineNode.Down.Data == value)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            
 
-        public void RemoveAllToothNodeByValue(int value)
+            for (ToothNode toothNode = spineNode.Down; toothNode != null; toothNode = toothNode.Down)
+                if (toothNode.Data == value)
+                    return true;
+
+            return false;
+
+
+        }
+        private void RemoveSingleToothNodeBySpineNodeAndValue(SpineNode spineNode, int value)
+        {
+            if (spineNode.Count == 0)
+            {
+                return;
+            }
+            if (spineNode.Count == 1)
+                if (spineNode.Down.Data == value)
+                {
+                    spineNode.Down = null;
+                    //spineNode.Count--;
+                    return;
+                }
+            //spineNode.Count--;
+            ToothNode toothNode = spineNode.Down;
+
+            while (toothNode.Down.Data != value) 
+            { 
+                toothNode.Down = toothNode.Down.Down; 
+            }
+
+            toothNode.Down = toothNode.Down.Down;
+        }
+
+
+
+
+        public void RemoveAllToothNodesByValue(int value)
         {
             for (int x = 0; x < Count; x++)
             {
                 SpineNode spineNode = GetSpineNodeByIndex(x);
-                for (int y = 0; y < spineNode.Count; y++)
+                while (DoesSpineNodeContainValue(spineNode, value))
                 {
-                    if (this[x, y] == value)
-                    {
-                        RemoveToothNodeByIndex(x, y);
-                    }
+                    RemoveSingleToothNodeBySpineNodeAndValue(spineNode, value);
+                    spineNode.Count--;
                 }
             }
 
         }
         public void RemoveEveryToothNodeByValueAndSpineIndex(int index, int value)
-        {
+        {      
             for (int x = 0; x < Count; x++)
             {
                 if (x == index)
                 {
-                    SpineNode spineNode = GetSpineNodeByIndex(x);
-                    for (int y = 0; y < spineNode.Count; y++)
+                    SpineNode spineNode = GetSpineNodeByIndex(index);
+                    while (DoesSpineNodeContainValue(spineNode, value))
                     {
-                        if (this[x, y] == value)
-                        {
-                            RemoveToothNodeByIndex(x, y);
-                        }
+                        RemoveSingleToothNodeBySpineNodeAndValue(spineNode, value);
+                        spineNode.Count--;
                     }
                 }
             }
@@ -210,6 +250,13 @@ namespace CombList
             VerifyXIndex(x);
             SpineNode spineNode = GetSpineNodeByIndex(x);
             VerifyYIndex(y, spineNode);
+            if (y == 0)
+            {
+                spineNode.Down = spineNode.Down.Down;
+                spineNode.Count--;
+                return;
+            }
+                
             ToothNode toothNode = spineNode.Down;
             for (int i = 0; i != y - 1; toothNode = toothNode.Down, i++) ;
 
@@ -237,7 +284,6 @@ namespace CombList
                 SpineNode spineNode = GetSpineNodeByIndex(x);
                 VerifyYIndex(y, spineNode);
                 ToothNode toothNode = spineNode.Down;
-
                 for (int i = 0; i != y; toothNode = toothNode.Down, i++) ;
                 return toothNode.Data;
             }
