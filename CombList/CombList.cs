@@ -188,18 +188,18 @@ namespace CombList
         }
         private void RemoveSingleToothNodeBySpineNodeAndValue(SpineNode spineNode, int value)
         {
-            if (spineNode.Count == 0)
-            {
-                return;
-            }
+            //if (spineNode.Count == 0)
+            //{
+            //    return;
+            //}
             if (spineNode.Count == 1)
                 if (spineNode.Down.Data == value)
                 {
                     spineNode.Down = null;
-                    //spineNode.Count--;
+                    // spineNode.Count--;
                     return;
                 }
-            //spineNode.Count--;
+            // spineNode.Count--;
             ToothNode toothNode = spineNode.Down;
 
             while (toothNode.Down.Data != value) 

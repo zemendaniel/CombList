@@ -8,6 +8,8 @@ namespace CombList
         {
             CombList cl = new CombList();
             cl.AddSpineNodeFirst(1);
+            cl.AddSpineNodeFirst(1);
+            cl.AddSpineNodeFirst(1);
             cl.AddSpineNodeLast(20);
             cl.AddSpineNodeFirst(5);
             cl.AddSpineNodeLast(26);
@@ -51,23 +53,34 @@ namespace CombList
             cl.AddSpineNodeLast(99);
             cl.AddToothNodeLast(cl.Count - 1, 99);
             cl.AddToothNodeLast(cl.Count - 1, 100);
+            cl.AddToothNodeLast(cl.Count - 1, 5);
+            cl.AddToothNodeLast(cl.Count - 1, 5);
+            cl.AddToothNodeLast(cl.Count - 1, 5);
+            cl.AddToothNodeLast(cl.Count - 1, 5);
+            cl.AddToothNodeLast(cl.Count - 1, 5);
+            cl.AddToothNodeLast(cl.Count - 1, 5);
+            cl.AddToothNodeLast(cl.Count - 1, 5);
+            cl.AddToothNodeLast(cl.Count - 1, 5);
+            
 
             Console.WriteLine(cl);
             Console.WriteLine("\n");
 
             Console.WriteLine(cl.IsSpineNodeElement(2));
 
-            cl.RemoveAllSpineNodesByValue(2);
+            cl.RemoveSpineNodeByIndex(3);
             Console.WriteLine(cl);
-            Console.WriteLine("\n");
 
-            cl.RemoveToothNodeByIndex(0, 0);
+            Console.WriteLine(cl.IsToothNodeElement(0, 3));
+
+            cl.RemoveAllSpineNodesByValue(1);
             Console.WriteLine(cl);
-            Console.WriteLine("\n");
 
+            cl.RemoveEveryToothNodeByValueAndSpineIndex(0, 2);
             cl.RemoveAllToothNodesByValue(1);
-            Console.WriteLine(cl);
-            Console.WriteLine("\n");
+            cl.RemoveAllToothNodesByValue(5);
+
+            Console.WriteLine(cl); 
 
         }
     }
